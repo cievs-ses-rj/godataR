@@ -88,6 +88,7 @@ export_downloader <- function(url,
     )
 
     export_request_status <- httr::content(export_request_status)
+    status_step <- export_request_status$statusStep
     message(
       paste0(
         "...processed ",
