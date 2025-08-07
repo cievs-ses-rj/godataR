@@ -5,7 +5,7 @@
 #' @param url Insert the base URL for your instance of Go.Data here. Don't
 #' forget the forward slash "/" at end!
 #' @param username The email address for your Go.Data login.
-#' @param password The password for your Go.Data login
+#' @param password The password for your Go.Data login.
 #' @param api_call_request The API url to get the number of records.
 #' @param wait The number of seconds to wait in between iterations of checking
 #' the status of the export.
@@ -38,7 +38,6 @@ export_downloader <- function(url,
                               api_call_request,
                               wait,
                               file_type) {
-
   export_log_id_request <- httr::GET(
     paste0(
       api_call_request,
@@ -60,9 +59,9 @@ export_downloader <- function(url,
 
   request_id <- purrr::pluck(export_log_id_request_content, "exportLogId")
 
-  #Check status of request periodcially, until finished
-  #function argument 'wait' determines the number of seconds to wait between
-  #iterations
+  # Check status of request periodcially, until finished
+  # function argument 'wait' determines the number of seconds to wait between
+  # iterations
   export_request_status <- get_export_status(
     url = url,
     username = username,
@@ -100,7 +99,7 @@ export_downloader <- function(url,
     )
   }
 
-  #Download the export
+  # Download the export
   message("...beginning download")
   if (file_type == "json") {
     df_request <- httr::GET(
