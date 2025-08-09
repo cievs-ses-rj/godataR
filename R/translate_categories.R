@@ -30,7 +30,6 @@
 #' )
 #' }
 translate_categories <- function(data, language_tokens) {
-
   stopifnot(
     "data must be tabular data" =
       is.data.frame(data),
@@ -71,7 +70,7 @@ translate_token <- function(data, language_tokens) {
   } else {
     token_index <- lapply(
       data,
-      function(x) which(language_tokens$tokens$token %in% x)
+      function(x) which(unique(language_tokens$tokens$token) %in% x)
     )
     token_index <- unlist(
       lapply(
